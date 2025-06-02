@@ -1,0 +1,31 @@
+name: data validation
+
+on:
+   push:
+      branches:
+       -main
+
+jobs:
+  validation-pipeline:
+    run-on: ubuntu-lastest
+    steps:
+
+    - name: checkout the code
+      uses: actions/checkout@v2
+
+    - name: settingup python
+      uses: actions/setup-python@v2
+      with: 
+        python version: 3.9
+
+    - name: libraries to installation
+      run: pip install pandas datetime 
+
+    - name: run the python script
+      run: python app.py
+
+    - name: Publish files to github repo
+      uses: mikeal/publish-to-github-action@master
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        BRANCH_NAME: 'main'
