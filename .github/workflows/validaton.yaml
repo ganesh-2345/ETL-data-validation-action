@@ -7,21 +7,21 @@ on:
 
 jobs:
   validation-pipeline:
-    run-on: ubuntu-lastest
+    runs-on: ubuntu-lastest
     steps:
 
-    - name: checkout the code
+    - name: Checkout the code
       uses: actions/checkout@v2
 
-    - name: settingup python
+    - name: Setting up python
       uses: actions/setup-python@v2
       with: 
         python version: 3.9
 
-    - name: libraries to installation
+    - name: Libraries to installation
       run: pip install pandas datetime 
 
-    - name: run the python script
+    - name: Run the python script
       run: python app.py
 
     - name: Publish files to github repo
