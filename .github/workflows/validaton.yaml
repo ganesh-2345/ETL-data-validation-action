@@ -1,27 +1,27 @@
-name: data validation
+name: Data validation
 
 on:
-   push:
-      branches:
-       -main
+  push:
+    branches:
+    - main
 
 jobs:
   validation-pipeline:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     steps:
 
-    - name: Checkout the code
+    - name: Checkout Code
       uses: actions/checkout@v2
 
-    - name: Setting up python
+    - name: Setting up Python
       uses: actions/setup-python@v2
-      with: 
-        python version: 3.9
+      with:
+        python-version: 3.9
 
-    - name: Libraries to installation
-      run: pip install pandas datetime 
+    - name: Libraries Installations
+      run: pip install pandas datetime
 
-    - name: Run the python script
+    - name: Run the script
       run: python app.py
 
     - name: Publish files to github repo
